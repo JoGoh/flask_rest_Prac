@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with #rest api
 from flask_sqlalchemy import SQLAlchemy #for database
 
@@ -103,9 +103,21 @@ class Video(Resource):
 
 api.add_resource(Video, "/video/<int:video_id>") #define root of the resource Video is at "/video/<int:video_id>"
 
+
+##################################
+# homepage http://127.0.0.1:5000/
+##################################
 @app.route("/")
 def home():
-    return "Test"
+    return render_template("home.html")
+
+#########################################
+# about page http://127.0.0.1:5000/about
+#########################################
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 
 if __name__ == "__main__": 
 	app.run(debug=True)   # debug info for logging, only run in development environment
