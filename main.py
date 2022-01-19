@@ -103,5 +103,9 @@ class Video(Resource):
 
 api.add_resource(Video, "/video/<int:video_id>") #define root of the resource Video is at "/video/<int:video_id>"
 
+@app.route("/")
+def home():
+    return "Test"
+
 if __name__ == "__main__": 
 	app.run(debug=True)   # debug info for logging, only run in development environment
